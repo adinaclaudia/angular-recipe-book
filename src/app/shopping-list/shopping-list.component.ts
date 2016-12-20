@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Ingredient} from "../recipes/ingredient";
-import {ShoppingListService} from "./shopping-list.service";
+import {Ingredient} from '../recipes/ingredient';
+import {ShoppingListService} from './shopping-list.service';
 
 @Component({
   selector: 'rb-shopping-list',
@@ -9,7 +9,7 @@ import {ShoppingListService} from "./shopping-list.service";
 export class ShoppingListComponent implements OnInit {
 
   items: Ingredient[];
-  selectedItem: Ingredient=null;
+  selectedItem: Ingredient = null;
   constructor(private sls: ShoppingListService) { }
 
   ngOnInit() {
@@ -21,7 +21,7 @@ export class ShoppingListComponent implements OnInit {
   }
 
   onCleared() {
-    this.selectedItem=null;
+    this.selectedItem = null;
   }
 
 }

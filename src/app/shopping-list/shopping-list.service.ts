@@ -1,4 +1,4 @@
-import {Ingredient} from "../recipes/ingredient";
+import {Ingredient} from '../recipes/ingredient';
 export class ShoppingListService {
   private items: Ingredient[] = [];
 
@@ -8,8 +8,8 @@ export class ShoppingListService {
     return this.items;
   }
 
-  addItems(items: Ingredient[]){
-    Array.prototype.push.apply(this.items, items)
+  addItems(items: Ingredient[]) {
+    Array.prototype.push.apply(this.items, items);
   }
 
   addItem(item: Ingredient) {
@@ -17,10 +17,10 @@ export class ShoppingListService {
   }
 
   editItem(oldItem: Ingredient, newItem: Ingredient) {
-    this.items[this.items.indexOf(oldItem)]=newItem;
+    this.items[this.items.indexOf(oldItem)] = newItem;
   }
 
   deleteItem(item: Ingredient) {
-    this.items.splice(this.items.indexOf(item),1)
+    this.items.splice(this.items.indexOf(item), 1);
   }
 }

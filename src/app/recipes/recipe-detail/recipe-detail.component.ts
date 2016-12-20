@@ -1,9 +1,9 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Recipe} from "../recipe";
-import {ShoppingListService} from "../../shopping-list/shopping-list.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Subscription} from "rxjs";
-import {RecipeService} from "../recipe.service";
+import {Recipe} from '../recipe';
+import {ShoppingListService} from '../../shopping-list/shopping-list.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs/Rx';
+import {RecipeService} from '../recipe.service';
 
 @Component({
   selector: 'rb-recipe-detail',
@@ -11,11 +11,15 @@ import {RecipeService} from "../recipe.service";
 })
 export class RecipeDetailComponent implements OnInit, OnDestroy {
 
-  //@Input()
+  // @Input()
   selectedRecipe: Recipe;
   private subscription: Subscription;
   private recipeIndex: number;
-  constructor(private sls: ShoppingListService, private route: ActivatedRoute, private recipesService: RecipeService, private router: Router) { }
+  constructor(
+    private sls: ShoppingListService,
+    private route: ActivatedRoute,
+    private recipesService: RecipeService,
+    private router: Router) { }
 
   ngOnInit() {
      this.subscription = this.route.params.subscribe(
@@ -26,18 +30,18 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
      );
   }
 
-  onAddToShoppingList(){
+  onAddToShoppingList() {
     this.sls.addItems(this.selectedRecipe.ingredients);
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  onEdit(){
-     this.router.navigate(['/recipes', this.recipeIndex,'edit']);
+  onEdit() {
+     this.router.navigate(['/recipes', this.recipeIndex, 'edit']);
   }
 
-  onDelete(){
+  onDelete() {
      this.recipesService.deleteRecipe(this.selectedRecipe);
      this.router.navigate(['/recipes']);
   }

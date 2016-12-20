@@ -4,19 +4,19 @@ import {Directive, HostBinding, HostListener} from '@angular/core';
   selector: '[rbDropdown]'
 })
 export class DropdownDirective {
-  //class open is defined in boostrap css
+  private isOpen = false;
+
+  // class open is defined in boostrap css
    @HostBinding('class.open') get opened() {
      return this.isOpen;
    }
 
    @HostListener('click') open() {
-     this.isOpen=true;
+     this.isOpen = true;
    }
 
    @HostListener('mouseleave') close() {
-     this.isOpen=false;
+     this.isOpen = false;
    }
-
-   private isOpen = false;
 
 }
